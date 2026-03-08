@@ -7,7 +7,17 @@ import os
 
 # ── Paths ──────────────────────────────────────────────────────────────────
 BASE_DIR    = os.path.dirname(os.path.abspath(__file__))
-INPUT_CSV   = os.path.join(BASE_DIR, "sales_input.csv")
+
+# ── Input CSV ──────────────────────────────────────────────────────────────
+# Three ways to provide the input CSV (checked in this order):
+#   1. --input flag at runtime:   python pipeline.py --input my_data.csv
+#   2. Drop-zone folder:          place any single .csv in the inputs/ folder
+#   3. Fallback default below:    edit INPUT_CSV_DEFAULT to a fixed path
+#
+# You should rarely need to edit INPUT_CSV_DEFAULT — use option 1 or 2 instead.
+INPUT_CSV_DEFAULT = os.path.join(BASE_DIR, "sales_input.csv")
+INPUTS_DIR        = os.path.join(BASE_DIR, "inputs")   # drop-zone folder
+
 OUTPUT_DIR  = os.path.join(BASE_DIR, "outputs")
 
 # Intermediate checkpoints (set to None to skip saving)
